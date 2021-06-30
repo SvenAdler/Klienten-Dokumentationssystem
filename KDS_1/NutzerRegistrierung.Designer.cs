@@ -32,6 +32,8 @@ namespace KDS_1
             this.panelUeberschriftKlientenListe = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panelKlRegGruppierung = new System.Windows.Forms.Panel();
+            this.textBoxPasswort = new System.Windows.Forms.TextBox();
+            this.labelPasswort = new System.Windows.Forms.Label();
             this.buttonRegistrierungSpeichern = new System.Windows.Forms.Button();
             this.textBoxMailadresse = new System.Windows.Forms.TextBox();
             this.labelMailadresse = new System.Windows.Forms.Label();
@@ -41,8 +43,6 @@ namespace KDS_1
             this.labelArztnummer = new System.Windows.Forms.Label();
             this.labelNachname = new System.Windows.Forms.Label();
             this.labelVorname = new System.Windows.Forms.Label();
-            this.textBoxPasswort = new System.Windows.Forms.TextBox();
-            this.labelPasswort = new System.Windows.Forms.Label();
             this.panelUeberschriftKlientenListe.SuspendLayout();
             this.panelKlRegGruppierung.SuspendLayout();
             this.SuspendLayout();
@@ -86,6 +86,24 @@ namespace KDS_1
             this.panelKlRegGruppierung.Size = new System.Drawing.Size(425, 396);
             this.panelKlRegGruppierung.TabIndex = 7;
             // 
+            // textBoxPasswort
+            // 
+            this.textBoxPasswort.Location = new System.Drawing.Point(178, 203);
+            this.textBoxPasswort.Name = "textBoxPasswort";
+            this.textBoxPasswort.Size = new System.Drawing.Size(200, 20);
+            this.textBoxPasswort.TabIndex = 12;
+            // 
+            // labelPasswort
+            // 
+            this.labelPasswort.AutoSize = true;
+            this.labelPasswort.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.labelPasswort.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labelPasswort.Location = new System.Drawing.Point(37, 201);
+            this.labelPasswort.Name = "labelPasswort";
+            this.labelPasswort.Size = new System.Drawing.Size(66, 20);
+            this.labelPasswort.TabIndex = 11;
+            this.labelPasswort.Text = "Passwort";
+            // 
             // buttonRegistrierungSpeichern
             // 
             this.buttonRegistrierungSpeichern.Font = new System.Drawing.Font("Segoe UI", 11.25F);
@@ -99,7 +117,7 @@ namespace KDS_1
             // 
             // textBoxMailadresse
             // 
-            this.textBoxMailadresse.Location = new System.Drawing.Point(178, 173);
+            this.textBoxMailadresse.Location = new System.Drawing.Point(178, 171);
             this.textBoxMailadresse.Name = "textBoxMailadresse";
             this.textBoxMailadresse.Size = new System.Drawing.Size(200, 20);
             this.textBoxMailadresse.TabIndex = 9;
@@ -109,7 +127,7 @@ namespace KDS_1
             this.labelMailadresse.AutoSize = true;
             this.labelMailadresse.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.labelMailadresse.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelMailadresse.Location = new System.Drawing.Point(41, 171);
+            this.labelMailadresse.Location = new System.Drawing.Point(37, 169);
             this.labelMailadresse.Name = "labelMailadresse";
             this.labelMailadresse.Size = new System.Drawing.Size(88, 20);
             this.labelMailadresse.TabIndex = 8;
@@ -117,7 +135,7 @@ namespace KDS_1
             // 
             // textBoxArztnummer
             // 
-            this.textBoxArztnummer.Location = new System.Drawing.Point(178, 140);
+            this.textBoxArztnummer.Location = new System.Drawing.Point(178, 138);
             this.textBoxArztnummer.Name = "textBoxArztnummer";
             this.textBoxArztnummer.Size = new System.Drawing.Size(200, 20);
             this.textBoxArztnummer.TabIndex = 5;
@@ -141,7 +159,7 @@ namespace KDS_1
             this.labelArztnummer.AutoSize = true;
             this.labelArztnummer.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.labelArztnummer.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelArztnummer.Location = new System.Drawing.Point(41, 142);
+            this.labelArztnummer.Location = new System.Drawing.Point(37, 136);
             this.labelArztnummer.Name = "labelArztnummer";
             this.labelArztnummer.Size = new System.Drawing.Size(91, 20);
             this.labelArztnummer.TabIndex = 2;
@@ -152,7 +170,7 @@ namespace KDS_1
             this.labelNachname.AutoSize = true;
             this.labelNachname.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.labelNachname.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNachname.Location = new System.Drawing.Point(41, 105);
+            this.labelNachname.Location = new System.Drawing.Point(37, 105);
             this.labelNachname.Name = "labelNachname";
             this.labelNachname.Size = new System.Drawing.Size(80, 20);
             this.labelNachname.TabIndex = 1;
@@ -168,24 +186,6 @@ namespace KDS_1
             this.labelVorname.Size = new System.Drawing.Size(68, 20);
             this.labelVorname.TabIndex = 0;
             this.labelVorname.Text = "Vorname";
-            // 
-            // textBoxPasswort
-            // 
-            this.textBoxPasswort.Location = new System.Drawing.Point(178, 205);
-            this.textBoxPasswort.Name = "textBoxPasswort";
-            this.textBoxPasswort.Size = new System.Drawing.Size(200, 20);
-            this.textBoxPasswort.TabIndex = 12;
-            // 
-            // labelPasswort
-            // 
-            this.labelPasswort.AutoSize = true;
-            this.labelPasswort.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.labelPasswort.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelPasswort.Location = new System.Drawing.Point(41, 207);
-            this.labelPasswort.Name = "labelPasswort";
-            this.labelPasswort.Size = new System.Drawing.Size(66, 20);
-            this.labelPasswort.TabIndex = 11;
-            this.labelPasswort.Text = "Passwort";
             // 
             // NutzerRegistrierung
             // 

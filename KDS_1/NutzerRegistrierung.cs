@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Text;
 using System.Windows.Forms;
 
 namespace KDS_1
@@ -57,7 +58,7 @@ namespace KDS_1
             cmd.Parameters.AddWithValue("nachname", nachname);
             cmd.Parameters.AddWithValue("arztnummer", arztnummer);
             cmd.Parameters.AddWithValue("mailadresse", mailadresse);
-            cmd.Parameters.AddWithValue("passwort", passwort); // TODO Passwort hashen!  
+            cmd.Parameters.AddWithValue("passwort", HashClass.SHA1HashPasswort(passwort)); // TODO Passwort hashen!  
             cmd.Prepare();
             cmd.ExecuteNonQuery();
 
@@ -76,19 +77,5 @@ namespace KDS_1
             * Hashed: /OOoOer10+tGwTRDTrQSoeCxVTFr6dtYly7d0cPxIak=
         */
 
-        private void PasswortHashing()
-        {
-            int numberOfIterations = 99;
-            var hashFunction = new HashSaltWithRounds();
-            byte[] salt = hashFunction.GenerateSalt();
-
-            var hashedPassword1 = hashFunction.HashDataWithRounds(Encoding.UTF8.GetBytes(password), salt, numberOfIterations);
-            var hashedPassword2 = hashFunction.HashDataWithRounds(Encoding.UTF8.GetBytes(password), salt, numberOfIterations);
-
-            Console.WriteLine($"hashedPassword1 :{hashedPassword1}");
-            Console.WriteLine($"hashedPassword2 :{hashedPassword2}");
-            Console.WriteLine(hashedPassword1.Equals(hashedPassword2));
-
-        }
     }
 }

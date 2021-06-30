@@ -33,7 +33,6 @@ namespace KDS_1
             this.dateiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.klientHinzufuegenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.klientEntfernenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.importierenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportierenAlsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.jSONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sendenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,7 +41,6 @@ namespace KDS_1
             this.ganzerBildschirmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vergrößernToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verkleinernToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.buttonDatensatzOeffnen = new System.Windows.Forms.Button();
             this.panelUeberschriftKlientenListe = new System.Windows.Forms.Panel();
             this.labelKlientenListe = new System.Windows.Forms.Label();
             this.panelMainWindow = new System.Windows.Forms.Panel();
@@ -89,7 +87,6 @@ namespace KDS_1
             this.dateiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.klientHinzufuegenToolStripMenuItem,
             this.klientEntfernenToolStripMenuItem,
-            this.importierenToolStripMenuItem,
             this.exportierenAlsToolStripMenuItem,
             this.sendenToolStripMenuItem,
             this.beendenToolStripMenuItem});
@@ -116,14 +113,6 @@ namespace KDS_1
             this.klientEntfernenToolStripMenuItem.Text = "Klient entfernen";
             this.klientEntfernenToolStripMenuItem.Click += new System.EventHandler(this.klientEntfernenToolStripMenuItem_Click);
             // 
-            // importierenToolStripMenuItem
-            // 
-            this.importierenToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(40)))));
-            this.importierenToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.importierenToolStripMenuItem.Name = "importierenToolStripMenuItem";
-            this.importierenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.importierenToolStripMenuItem.Text = "Importieren";
-            // 
             // exportierenAlsToolStripMenuItem
             // 
             this.exportierenAlsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(40)))));
@@ -137,7 +126,7 @@ namespace KDS_1
             // jSONToolStripMenuItem
             // 
             this.jSONToolStripMenuItem.Name = "jSONToolStripMenuItem";
-            this.jSONToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
+            this.jSONToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.jSONToolStripMenuItem.Text = "JSON";
             // 
             // sendenToolStripMenuItem
@@ -192,15 +181,6 @@ namespace KDS_1
             this.verkleinernToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.verkleinernToolStripMenuItem.Text = "Verkleinern";
             // 
-            // buttonDatensatzOeffnen
-            // 
-            this.buttonDatensatzOeffnen.Location = new System.Drawing.Point(12, 427);
-            this.buttonDatensatzOeffnen.Name = "buttonDatensatzOeffnen";
-            this.buttonDatensatzOeffnen.Size = new System.Drawing.Size(84, 23);
-            this.buttonDatensatzOeffnen.TabIndex = 2;
-            this.buttonDatensatzOeffnen.Text = "Datei öffnen...";
-            this.buttonDatensatzOeffnen.UseVisualStyleBackColor = true;
-            // 
             // panelUeberschriftKlientenListe
             // 
             this.panelUeberschriftKlientenListe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(66)))), ((int)(((byte)(88)))));
@@ -225,7 +205,6 @@ namespace KDS_1
             // 
             this.panelMainWindow.Controls.Add(this.menuStripMain);
             this.panelMainWindow.Controls.Add(this.panelUeberschriftKlientenListe);
-            this.panelMainWindow.Controls.Add(this.buttonDatensatzOeffnen);
             this.panelMainWindow.Controls.Add(this.listBoxKlienten);
             this.panelMainWindow.Location = new System.Drawing.Point(-7, -6);
             this.panelMainWindow.Name = "panelMainWindow";
@@ -429,7 +408,6 @@ namespace KDS_1
         private System.Windows.Forms.ToolStripMenuItem dateiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem klientHinzufuegenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem klientEntfernenToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem importierenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportierenAlsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem jSONToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sendenToolStripMenuItem;
@@ -438,7 +416,6 @@ namespace KDS_1
         private System.Windows.Forms.ToolStripMenuItem ganzerBildschirmToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem vergrößernToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verkleinernToolStripMenuItem;
-        private System.Windows.Forms.Button buttonDatensatzOeffnen;
         private System.Windows.Forms.Panel panelUeberschriftKlientenListe;
         private System.Windows.Forms.Label labelKlientenListe;
         private System.Windows.Forms.Panel panelMainWindow;
