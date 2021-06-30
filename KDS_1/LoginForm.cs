@@ -18,11 +18,48 @@ namespace KDS_1
             nutzerReg.ShowDialog();
         }
 
+        public bool MailadressePruefen(string s)
+        {
+            if (s.Length == 0)
+            {
+                return false;
+            }
+            int iat = s.IndexOf('@');
+            if (iat < 0)
+            {
+                return false;
+            }
+            int iat2 = s.IndexOf('@', iat + 1);
+            if (iat2 >= 0)
+            {
+                return false;
+            }
+            int ipunkt = s.IndexOf('.', iat + 1);
+            if (ipunkt < 0)
+            {
+                return false;
+            }
+            if (ipunkt == iat + 1)
+            {
+                return false;
+            }
+            if (s[s.Length - 1] == '.')
+            {
+                return false;
+            }
+            return true;
+        }
+
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            // TODO Bedingungen für mailadresse und passwort
+            // TODO Bedingungen passwort
 
             string mailadresse = textBoxEmailAsNutzername.Text;
+            if (!MailadressePruefen(mailadresse))
+            {
+                MessageBox.Show("Bitte eine valide Mailadresse eingeben.");
+                return;
+            }
 
             string passwort = textBoxNutzerPasswort.Text;
 
@@ -40,14 +77,13 @@ namespace KDS_1
                 DialogResult = DialogResult.OK;
                 Close();
             }
-            else 
+            else
             {
                 MessageBox.Show("Nutzer nicht vorhanden oder falsches Passwort eingegeben!");
             }
 
             reader.Close();
             Program.conn.Close();
-
         }
     }
 }

@@ -166,7 +166,6 @@ namespace KDS_1
             long logNutzer = Program.eingeloggterNutzer.ID;
 
             bearbeiteterKlient = alleKlienten[index];
-            
 
             if (bearbeiteterEintrag == null)
             {

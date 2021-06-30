@@ -1,6 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Text;
 using System.Windows.Forms;
 
 namespace KDS_1
@@ -30,7 +29,7 @@ namespace KDS_1
             }
 
             string mailadresse = textBoxMailadresse.Text;
-            if (mailadresse.Length == 0 || mailadresse.Length > 50)
+            if (!LoginForm.MailadressePruefen(mailadresse) || mailadresse.Length > 50)
             {
                 return;
             }
@@ -51,14 +50,13 @@ namespace KDS_1
 
             Program.conn.Open();
 
-            //Klient erstellen
             MySqlCommand cmd = Program.conn.CreateCommand();
             cmd.CommandText = "INSERT INTO kds.nutzer(vorname,nachname,mailadresse,arztnummer, passwort) VALUES (@vorname, @nachname, @mailadresse, @arztnummer, @passwort)";
             cmd.Parameters.AddWithValue("vorname", vorname);
             cmd.Parameters.AddWithValue("nachname", nachname);
             cmd.Parameters.AddWithValue("arztnummer", arztnummer);
             cmd.Parameters.AddWithValue("mailadresse", mailadresse);
-            cmd.Parameters.AddWithValue("passwort", HashClass.SHA1HashPasswort(passwort)); // TODO Passwort hashen!  
+            cmd.Parameters.AddWithValue("passwort", HashClass.SHA1HashPasswort(passwort));
             cmd.Prepare();
             cmd.ExecuteNonQuery();
 
@@ -66,16 +64,5 @@ namespace KDS_1
 
             this.Close();
         }
-
-        /*
-         * Passwort Hash Sektion
-         * 
-            * SAMPLE OUTPUT
-            *
-            * Enter a password: Xtw9NMgx
-            * Salt: NZsP6NnmfBuYeJrrAKNuVQ==
-            * Hashed: /OOoOer10+tGwTRDTrQSoeCxVTFr6dtYly7d0cPxIak=
-        */
-
     }
 }
