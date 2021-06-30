@@ -240,7 +240,7 @@ namespace KDS_1
             //Platzhalter automatisches Login des ersten Nutzers!
             Program.conn.Open();
             MySqlCommand cmd = Program.conn.CreateCommand();
-            cmd.CommandText = "SELECT nutzer_ID, vorname, nachname, mailadresse, arztnummer FROM kds.nutzer WHERE mailadresse = 'H.Adler@praxis.de' AND passwort = 'fas3234' LIMIT 1"; // WHERE mailadresse = ..... AND passwort = .... 
+            cmd.CommandText = "SELECT nutzer_ID, vorname, nachname, mailadresse, arztnummer FROM kds.nutzer WHERE mailadresse = 'H.Adler@praxis.de' AND passwort = 'fas3234' LIMIT 1"; // Testnutzer aus Datenbank! 
             MySqlDataReader reader = cmd.ExecuteReader();
             reader.Read();
 

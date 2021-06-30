@@ -103,7 +103,7 @@ namespace KDS_1
             this.klientHinzufuegenToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(40)))));
             this.klientHinzufuegenToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.klientHinzufuegenToolStripMenuItem.Name = "klientHinzufuegenToolStripMenuItem";
-            this.klientHinzufuegenToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.klientHinzufuegenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.klientHinzufuegenToolStripMenuItem.Text = "Klient hinzufügen";
             this.klientHinzufuegenToolStripMenuItem.Click += new System.EventHandler(this.klientHinzufuegenToolStripMenuItem_Click);
             // 
@@ -112,7 +112,7 @@ namespace KDS_1
             this.klientEntfernenToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(40)))));
             this.klientEntfernenToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.klientEntfernenToolStripMenuItem.Name = "klientEntfernenToolStripMenuItem";
-            this.klientEntfernenToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.klientEntfernenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.klientEntfernenToolStripMenuItem.Text = "Klient entfernen";
             this.klientEntfernenToolStripMenuItem.Click += new System.EventHandler(this.klientEntfernenToolStripMenuItem_Click);
             // 
@@ -121,7 +121,7 @@ namespace KDS_1
             this.importierenToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(40)))));
             this.importierenToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.importierenToolStripMenuItem.Name = "importierenToolStripMenuItem";
-            this.importierenToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.importierenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.importierenToolStripMenuItem.Text = "Importieren";
             // 
             // exportierenAlsToolStripMenuItem
@@ -131,7 +131,7 @@ namespace KDS_1
             this.jSONToolStripMenuItem});
             this.exportierenAlsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.exportierenAlsToolStripMenuItem.Name = "exportierenAlsToolStripMenuItem";
-            this.exportierenAlsToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.exportierenAlsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exportierenAlsToolStripMenuItem.Text = "Exportieren als...";
             // 
             // jSONToolStripMenuItem
@@ -145,7 +145,7 @@ namespace KDS_1
             this.sendenToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(40)))));
             this.sendenToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.sendenToolStripMenuItem.Name = "sendenToolStripMenuItem";
-            this.sendenToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.sendenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.sendenToolStripMenuItem.Text = "Senden";
             // 
             // beendenToolStripMenuItem
@@ -153,7 +153,7 @@ namespace KDS_1
             this.beendenToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(40)))));
             this.beendenToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.beendenToolStripMenuItem.Name = "beendenToolStripMenuItem";
-            this.beendenToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.beendenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.beendenToolStripMenuItem.Text = "Beenden";
             this.beendenToolStripMenuItem.Click += new System.EventHandler(this.beendenToolStripMenuItem_Click);
             // 
@@ -173,7 +173,7 @@ namespace KDS_1
             this.ganzerBildschirmToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(40)))));
             this.ganzerBildschirmToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.ganzerBildschirmToolStripMenuItem.Name = "ganzerBildschirmToolStripMenuItem";
-            this.ganzerBildschirmToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.ganzerBildschirmToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ganzerBildschirmToolStripMenuItem.Text = "Ganzer Bildschirm";
             // 
             // vergrößernToolStripMenuItem
@@ -181,7 +181,7 @@ namespace KDS_1
             this.vergrößernToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(40)))));
             this.vergrößernToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.vergrößernToolStripMenuItem.Name = "vergrößernToolStripMenuItem";
-            this.vergrößernToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.vergrößernToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.vergrößernToolStripMenuItem.Text = "Vergrößern ";
             // 
             // verkleinernToolStripMenuItem
@@ -189,7 +189,7 @@ namespace KDS_1
             this.verkleinernToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(40)))));
             this.verkleinernToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.verkleinernToolStripMenuItem.Name = "verkleinernToolStripMenuItem";
-            this.verkleinernToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.verkleinernToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.verkleinernToolStripMenuItem.Text = "Verkleinern";
             // 
             // buttonDatensatzOeffnen

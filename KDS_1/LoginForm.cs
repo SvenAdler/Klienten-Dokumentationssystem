@@ -26,7 +26,7 @@ namespace KDS_1
 
             Program.conn.Open();
             MySqlCommand cmd = Program.conn.CreateCommand();
-            cmd.CommandText = "SELECT nutzer_ID, vorname, nachname, mailadresse, arztnummer FROM kds.nutzer WHERE mailadresse = @mailadresse AND passwort = @passwort LIMIT 1"; // WHERE mailadresse = ..... AND passwort = .... 
+            cmd.CommandText = "SELECT nutzer_ID, vorname, nachname, mailadresse, arztnummer FROM kds.nutzer WHERE mailadresse = @mailadresse AND passwort = @passwort LIMIT 1";
             cmd.Parameters.AddWithValue("mailadresse", mailadresse);
             cmd.Parameters.AddWithValue("passwort", passwort);
             cmd.Prepare();
