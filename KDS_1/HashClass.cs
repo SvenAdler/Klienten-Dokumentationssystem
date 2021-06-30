@@ -1,31 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace KDS_1
 {
-    class HashClass
+    public class HashClass
     {
-        int saltLength = 32;
-        public byte[] GenerateSalt()
+        public static string SHA1HashPasswort(string passwort)
         {
-            using (var randomNumberGenerator = new RNGCryptoServiceProvider())
-            {
-                var randomNumber = new byte[saltLength];
-                randomNumberGenerator.GetBytes(randomNumber);
-                return randomNumber;
-            }
-        }
+            SHA1CryptoServiceProvider sha1 = new SHA1CryptoServiceProvider();
+            byte[] passwort_bytes = Encoding.ASCII.GetBytes(passwort);
+            byte[] encrypted_bytes = sha1.ComputeHash(passwort_bytes);
 
-        public string HashDataWithRounds(byte[] password, byte[] salt, int rounds)
-        {
-            using (var rfc2898 = new Rfc2898DeriveBytes(password, salt, rounds))
-            {
-                return Convert.ToBase64String(rfc2898.GetBytes(32));
-            }
+            return Convert.ToBase64String(encrypted_bytes);
         }
     }
 }

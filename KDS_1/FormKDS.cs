@@ -226,29 +226,29 @@ namespace KDS_1
         private void FormKDS_Shown(object sender, EventArgs e)
         {
             // Echtes Login mit LoginForm
-            //LoginForm lf = new LoginForm();
-            //lf.ShowDialog();
-            //if (lf.DialogResult != DialogResult.OK)
-            //{
-            //    Close();
-            //}
-            //else
-            //{
-            //    KlientenDatenLadenMainWin();
-            //}
+            LoginForm lf = new LoginForm();
+            lf.ShowDialog();
+            if (lf.DialogResult != DialogResult.OK)
+            {
+                Close();
+            }
+            else
+            {
+                KlientenDatenLadenMainWin();
+            }
 
             //Platzhalter automatisches Login des ersten Nutzers!
-            Program.conn.Open();
-            MySqlCommand cmd = Program.conn.CreateCommand();
-            cmd.CommandText = "SELECT nutzer_ID, vorname, nachname, mailadresse, arztnummer FROM kds.nutzer WHERE mailadresse = 'H.Adler@praxis.de' AND passwort = 'fas3234' LIMIT 1"; // Testnutzer aus Datenbank! 
-            MySqlDataReader reader = cmd.ExecuteReader();
-            reader.Read();
+            //Program.conn.Open();
+            //MySqlCommand cmd = Program.conn.CreateCommand();
+            //cmd.CommandText = "SELECT nutzer_ID, vorname, nachname, mailadresse, arztnummer FROM kds.nutzer WHERE mailadresse = 'H.Adler@praxis.de' AND passwort = 'fas3234' LIMIT 1"; // Testnutzer aus Datenbank! 
+            //MySqlDataReader reader = cmd.ExecuteReader();
+            //reader.Read();
 
-            Program.eingeloggterNutzer = new Nutzer(reader.GetInt64(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4));
+            //Program.eingeloggterNutzer = new Nutzer(reader.GetInt64(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4));
 
-            reader.Close();
-            Program.conn.Close();
-            KlientenDatenLadenMainWin();
+            //reader.Close();
+            //Program.conn.Close();
+            //KlientenDatenLadenMainWin();
         }
     }
 }

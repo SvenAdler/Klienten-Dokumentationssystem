@@ -20,6 +20,8 @@ namespace KDS_1
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
+            // TODO Bedingungen für mailadresse und passwort
+
             string mailadresse = textBoxEmailAsNutzername.Text;
 
             string passwort = textBoxNutzerPasswort.Text;
@@ -28,7 +30,7 @@ namespace KDS_1
             MySqlCommand cmd = Program.conn.CreateCommand();
             cmd.CommandText = "SELECT nutzer_ID, vorname, nachname, mailadresse, arztnummer FROM kds.nutzer WHERE mailadresse = @mailadresse AND passwort = @passwort LIMIT 1";
             cmd.Parameters.AddWithValue("mailadresse", mailadresse);
-            cmd.Parameters.AddWithValue("passwort", passwort);
+            cmd.Parameters.AddWithValue("passwort", HashClass.SHA1HashPasswort(passwort)); // Oder oben im String?
             cmd.Prepare();
             MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -38,7 +40,7 @@ namespace KDS_1
                 DialogResult = DialogResult.OK;
                 Close();
             }
-            else
+            else 
             {
                 MessageBox.Show("Nutzer nicht vorhanden oder falsches Passwort eingegeben!");
             }
