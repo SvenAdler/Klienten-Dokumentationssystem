@@ -96,6 +96,7 @@
     <Compile Include="FormKDS.Designer.cs">
       <DependentUpon>FormKDS.cs</DependentUpon>
     </Compile>
+    <Compile Include="HashClass.cs" />
     <Compile Include="Klient.cs" />
     <Compile Include="FormKlientenRegistrierung.cs">
       <SubType>Form</SubType>
