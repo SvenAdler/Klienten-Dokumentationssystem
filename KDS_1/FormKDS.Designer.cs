@@ -1,7 +1,7 @@
 ﻿
 namespace KDS_1
 {
-    partial class KDSMainWindow
+    partial class FormKDS
     {
         /// <summary>
         /// Erforderliche Designervariable.

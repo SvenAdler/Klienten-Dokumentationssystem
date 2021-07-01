@@ -5,13 +5,13 @@ using System.Windows.Forms;
 
 namespace KDS_1
 {
-    public partial class KDSMainWindow : Form
+    public partial class FormKDS : Form
     {
         private List<Klient> alleKlienten = new List<Klient>();
         private Dictionary<long, Klient> alleKlientenById = new Dictionary<long, Klient>();
         private List<Eintrag> bisherigeGespraeche = new List<Eintrag>();
 
-        public KDSMainWindow()
+        public FormKDS()
         {
             InitializeComponent();
         }
