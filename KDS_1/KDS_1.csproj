@@ -119,6 +119,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestClass.cs" />
     <EmbeddedResource Include="FormKDS.resx">
       <DependentUpon>FormKDS.cs</DependentUpon>
     </EmbeddedResource>
