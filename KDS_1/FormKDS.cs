@@ -60,7 +60,6 @@ namespace KDS_1
                 cmd.CommandText = "DELETE FROM kds.klient WHERE klient_id =" + klientDel.ID;
                 cmd.ExecuteNonQuery();
                 Program.conn.Close();
-                // GUI pflegen 
                 alleKlienten.RemoveAt(index);
                 listBoxKlienten.Items.Remove(klientDel.ToString());
             }
