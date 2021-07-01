@@ -21,6 +21,7 @@ namespace KDS_1
         public bool MailadressePruefen(string s)
         {
             // TODO evtl. in REGEX ändern 
+
             if (s.Length == 0)
             {
                 return false;
