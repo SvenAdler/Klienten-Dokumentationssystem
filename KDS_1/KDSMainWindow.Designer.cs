@@ -1,7 +1,7 @@
 ﻿
 namespace KDS_1
 {
-    partial class FormKDS
+    partial class KDSMainWindow
     {
         /// <summary>
         /// Erforderliche Designervariable.
@@ -128,6 +128,7 @@ namespace KDS_1
             this.jSONToolStripMenuItem.Name = "jSONToolStripMenuItem";
             this.jSONToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.jSONToolStripMenuItem.Text = "JSON";
+            this.jSONToolStripMenuItem.Click += new System.EventHandler(this.jSONToolStripMenuItem_Click);
             // 
             // sendenToolStripMenuItem
             // 
@@ -162,7 +163,7 @@ namespace KDS_1
             this.ganzerBildschirmToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(40)))));
             this.ganzerBildschirmToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.ganzerBildschirmToolStripMenuItem.Name = "ganzerBildschirmToolStripMenuItem";
-            this.ganzerBildschirmToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ganzerBildschirmToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.ganzerBildschirmToolStripMenuItem.Text = "Ganzer Bildschirm";
             // 
             // vergrößernToolStripMenuItem
@@ -170,7 +171,7 @@ namespace KDS_1
             this.vergrößernToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(40)))));
             this.vergrößernToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.vergrößernToolStripMenuItem.Name = "vergrößernToolStripMenuItem";
-            this.vergrößernToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.vergrößernToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.vergrößernToolStripMenuItem.Text = "Vergrößern ";
             // 
             // verkleinernToolStripMenuItem
@@ -178,7 +179,7 @@ namespace KDS_1
             this.verkleinernToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(40)))));
             this.verkleinernToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.verkleinernToolStripMenuItem.Name = "verkleinernToolStripMenuItem";
-            this.verkleinernToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.verkleinernToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.verkleinernToolStripMenuItem.Text = "Verkleinern";
             // 
             // panelUeberschriftKlientenListe
@@ -356,6 +357,7 @@ namespace KDS_1
             this.listBoxListeBisherigerGespraeche.Name = "listBoxListeBisherigerGespraeche";
             this.listBoxListeBisherigerGespraeche.Size = new System.Drawing.Size(204, 424);
             this.listBoxListeBisherigerGespraeche.TabIndex = 18;
+            this.listBoxListeBisherigerGespraeche.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listBoxListeBisherigerGespraeche_MouseClick);
             this.listBoxListeBisherigerGespraeche.SelectedIndexChanged += new System.EventHandler(this.listBoxListeBisherigerGespraeche_SelectedIndexChanged);
             // 
             // panelUeberschrAusgGespr
@@ -372,7 +374,7 @@ namespace KDS_1
             this.labelUberschriftAusgGespr.Size = new System.Drawing.Size(100, 23);
             this.labelUberschriftAusgGespr.TabIndex = 0;
             // 
-            // FormKDS
+            // KDSMainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -380,7 +382,7 @@ namespace KDS_1
             this.ClientSize = new System.Drawing.Size(856, 556);
             this.Controls.Add(this.panelMainWindow);
             this.MainMenuStrip = this.menuStripMain;
-            this.Name = "FormKDS";
+            this.Name = "KDSMainWindow";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Shown += new System.EventHandler(this.FormKDS_Shown);

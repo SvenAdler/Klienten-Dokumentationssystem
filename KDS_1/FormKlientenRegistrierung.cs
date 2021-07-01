@@ -7,9 +7,9 @@ namespace KDS_1
     public partial class FormKlientenRegistrierung : Form
     {
 
-        public FormKDS FormKDS;
+        public KDSMainWindow FormKDS;
 
-        public FormKlientenRegistrierung(FormKDS kds)
+        public FormKlientenRegistrierung(KDSMainWindow kds)
         {
             this.FormKDS = kds;
             InitializeComponent();
@@ -51,6 +51,7 @@ namespace KDS_1
 
             Program.conn.Open();
 
+            // TODO Transactions 
             //conn.BeginTransaction();
 
             //Klient erstellen

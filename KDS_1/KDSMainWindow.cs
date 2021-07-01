@@ -5,16 +5,13 @@ using System.Windows.Forms;
 
 namespace KDS_1
 {
-    public partial class FormKDS : Form
+    public partial class KDSMainWindow : Form
     {
-        // In FormKDSDesigner.cs muss this.Controls.Add(this.panelEintragKlientDoku); einkommentiert werden
-        // um des anzeigen zu lassen! 
-
         private List<Klient> alleKlienten = new List<Klient>();
         private Dictionary<long, Klient> alleKlientenById = new Dictionary<long, Klient>();
         private List<Eintrag> bisherigeGespraeche = new List<Eintrag>();
 
-        public FormKDS()
+        public KDSMainWindow()
         {
             InitializeComponent();
         }
@@ -50,36 +47,32 @@ namespace KDS_1
 
         private void klientEntfernenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int index = listBoxKlienten.SelectedIndex;
-            if (index < 0 || index >= alleKlienten.Count)
+            if (MessageBox.Show("Wollen Sie diesen Klienten entgültig entfernen?", "Klient entfernen", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                return;
+                int index = listBoxKlienten.SelectedIndex;
+                if (index < 0 || index >= alleKlienten.Count)
+                {
+                    return;
+                }
+                Klient klientDel = alleKlienten[index];
+                Program.conn.Open();
+                MySqlCommand cmd = Program.conn.CreateCommand();
+                cmd.CommandText = "DELETE FROM kds.klient WHERE klient_id =" + klientDel.ID;
+                cmd.ExecuteNonQuery();
+                Program.conn.Close();
+                // GUI pflegen 
+                alleKlienten.RemoveAt(index);
+                listBoxKlienten.Items.Remove(klientDel.ToString());
             }
-            Klient klientDel = alleKlienten[index];
-            Program.conn.Open();
-            MySqlCommand cmd = Program.conn.CreateCommand();
-            cmd.CommandText = "DELETE FROM kds.klient WHERE klient_id =" + klientDel.ID;
-            cmd.ExecuteNonQuery();
-            Program.conn.Close();
-            // GUI pflegen 
-            alleKlienten.RemoveAt(index);
-            listBoxKlienten.Items.Remove(klientDel.ToString());
         }
 
         private void beendenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // TODO Program beenden mit entsprechendem MenuToolStrip 
-            // Programm soll sich schließen, aber mit vorheriger Abfrage, ob man sich sicher ist
-
-            //     while (MessageBox.Show("Exit application?", "", MessageBoxButtons.YesNo) ==
-            //DialogResult.No)
-            //     {
-
-            //     }
+            if (MessageBox.Show("Anwendung beenden?", "Beenden", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
-
-        // TODO Exportieren und Importieren 
-        // Import über Daten öffnen Button? 
 
         public void AddBisherigesGespraechToListBox(Eintrag e)
         {
@@ -117,11 +110,11 @@ namespace KDS_1
 
             Program.conn.Open();
             MySqlCommand cmd = Program.conn.CreateCommand();
-            cmd.CommandText = "SELECT e.Eintraege_ID, e.eintrag, e.fk_nutzer_ID, n.nachname, n.vorname, n.arztnummer "
-           + "FROM kds.eintraege e "
-           + "LEFT OUTER JOIN kds.nutzer n ON n.nutzer_ID = e.fk_nutzer_ID "
-           + "WHERE fk_klient_id =  " + bearbeiteterKlient.ID;
-            //+ "ORDER BY e.Eintraege_ID DESC";
+            cmd.CommandText = "SELECT e.Eintraege_ID, e.eintrag, e.fk_nutzer_ID, n.nachname, n.vorname, n.arztnummer"
+           + " FROM kds.eintraege e"
+           + " LEFT OUTER JOIN kds.nutzer n ON n.nutzer_ID = e.fk_nutzer_ID"
+           + " WHERE fk_klient_id =  " + bearbeiteterKlient.ID
+           + " ORDER BY e.Eintraege_ID DESC";
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -141,15 +134,8 @@ namespace KDS_1
             listBoxListeBisherigerGespraeche.Items.Clear();
         }
 
-        // TODO Bisherige Gespräche
-        // Entweder in neuer Form ausgewähltes Gespräch anzeigen lassen
-        // oder in einem neuen Panel über dem Gespräch dokumentieren Panel (eher neue Form) 
-
-
         private void buttonGespraechSpeichern_Click(object sender, EventArgs e)
         {
-            // Reihenfolge der Liste korrekt anzeigen lassen
-
             string eintrag = textBoxGespraechEintrag.Text;
             if (eintrag.Length == 0)
             {
@@ -181,7 +167,6 @@ namespace KDS_1
                 cmd.Prepare();
                 cmd.ExecuteNonQuery();
                 Program.conn.Close();
-                long eintrag_id = cmd.LastInsertedId;
             }
             else
             {
@@ -218,6 +203,14 @@ namespace KDS_1
             textBoxGespraechEintrag.Text = bearbeiteterEintrag == null ? "" : bearbeiteterEintrag.Gespraech;
         }
 
+        private void listBoxListeBisherigerGespraeche_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (listBoxListeBisherigerGespraeche.IndexFromPoint(e.Location) < 0)
+            {
+                listBoxListeBisherigerGespraeche.ClearSelected();
+            }
+        }
+
         /**
          * Sektion Nutzer Login und Registrierung
         **/
@@ -236,10 +229,10 @@ namespace KDS_1
                 KlientenDatenLadenMainWin();
             }
 
-            //Platzhalter automatisches Login des ersten Nutzers!
+            //Platzhalter automatisches Login des ersten Nutzers und Testnutzer
             //Program.conn.Open();
             //MySqlCommand cmd = Program.conn.CreateCommand();
-            //cmd.CommandText = "SELECT nutzer_ID, vorname, nachname, mailadresse, arztnummer FROM kds.nutzer WHERE mailadresse = 'H.Adler@praxis.de' AND passwort = 'fas3234' LIMIT 1"; // Testnutzer aus Datenbank! 
+            //cmd.CommandText = "SELECT nutzer_ID, vorname, nachname, mailadresse, arztnummer FROM kds.nutzer WHERE mailadresse = 'H.Adler@praxis.de' AND passwort = 'fas3234' LIMIT 1";
             //MySqlDataReader reader = cmd.ExecuteReader();
             //reader.Read();
 
@@ -248,6 +241,11 @@ namespace KDS_1
             //reader.Close();
             //Program.conn.Close();
             //KlientenDatenLadenMainWin();
+        }
+
+        private void jSONToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // TODO Einträge Exportieren als JSON
         }
     }
 }

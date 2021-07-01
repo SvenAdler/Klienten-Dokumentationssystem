@@ -20,6 +20,7 @@ namespace KDS_1
 
         public bool MailadressePruefen(string s)
         {
+            // TODO evtl. in REGEX ändern 
             if (s.Length == 0)
             {
                 return false;
@@ -67,7 +68,7 @@ namespace KDS_1
             MySqlCommand cmd = Program.conn.CreateCommand();
             cmd.CommandText = "SELECT nutzer_ID, vorname, nachname, mailadresse, arztnummer FROM kds.nutzer WHERE mailadresse = @mailadresse AND passwort = @passwort LIMIT 1";
             cmd.Parameters.AddWithValue("mailadresse", mailadresse);
-            cmd.Parameters.AddWithValue("passwort", HashClass.SHA1HashPasswort(passwort)); // Oder oben im String?
+            cmd.Parameters.AddWithValue("passwort", HashClass.SHA1HashPasswort(passwort));
             cmd.Prepare();
             MySqlDataReader reader = cmd.ExecuteReader();
 

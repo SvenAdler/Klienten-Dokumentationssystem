@@ -90,11 +90,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Eintrag.cs" />
-    <Compile Include="FormKDS.cs">
+    <Compile Include="KDSMainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormKDS.Designer.cs">
-      <DependentUpon>FormKDS.cs</DependentUpon>
+    <Compile Include="KDSMainWindow.Designer.cs">
+      <DependentUpon>KDSMainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="HashClass.cs" />
     <Compile Include="Klient.cs" />
@@ -119,8 +119,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormKDS.resx">
-      <DependentUpon>FormKDS.cs</DependentUpon>
+    <EmbeddedResource Include="KDSMainWindow.resx">
+      <DependentUpon>KDSMainWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormKlientenRegistrierung.resx">
       <DependentUpon>FormKlientenRegistrierung.cs</DependentUpon>

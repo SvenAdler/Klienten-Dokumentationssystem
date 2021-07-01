@@ -16,12 +16,8 @@ namespace KDS_1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormKDS());
-            // Zuerst Login Form öffnen und einloggen
-            // TODO Regstrierungs Form für Nutzer! 
-            // Passwort und Nutzernamen Hashen!
-            // AddNutzer Funktion... 
-
+            Application.Run(new KDSMainWindow());
+            
             // Neues Hauptfenster festlegen nach login !! 
         }
     }
