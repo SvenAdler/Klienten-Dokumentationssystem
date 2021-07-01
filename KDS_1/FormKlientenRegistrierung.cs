@@ -51,6 +51,7 @@ namespace KDS_1
 
             Program.conn.Open();
 
+            // TODO Transactions 
             //conn.BeginTransaction();
 
             //Klient erstellen
