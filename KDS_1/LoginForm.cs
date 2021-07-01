@@ -54,7 +54,6 @@ namespace KDS_1
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             // TODO Bedingungen passwort
-
             string mailadresse = textBoxEmailAsNutzername.Text;
             if (!MailadressePruefen(mailadresse))
             {
