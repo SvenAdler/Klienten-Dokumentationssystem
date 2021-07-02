@@ -12,6 +12,7 @@ USE kds ;
 -- -----------------------------------------------------
 -- Table kds.nutzer
 -- -----------------------------------------------------
+#DROP TABLE IF EXISTS kds.nutzer;
 CREATE TABLE IF NOT EXISTS kds.nutzer (
   nutzer_ID INT NOT NULL AUTO_INCREMENT,
   vorname VARCHAR(45) NOT NULL,
@@ -59,8 +60,9 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 #DROP TABLE IF EXISTS kds.eintraege;
 CREATE TABLE IF NOT EXISTS kds.eintraege (
-  Eintraege_ID INT NOT NULL auto_increment,
+  Eintraege_ID INT NOT NULL AUTO_INCREMENT,
   eintrag MEDIUMTEXT NULL,
+  datumEintrag DATETIME NOT NULL,
   fk_nutzer_ID INT NOT NULL,
   fk_klient_ID INT NOT NULL,
   PRIMARY KEY (Eintraege_ID),
@@ -77,8 +79,6 @@ CREATE TABLE IF NOT EXISTS kds.eintraege (
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
-
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

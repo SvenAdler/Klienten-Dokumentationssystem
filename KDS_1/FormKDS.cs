@@ -16,12 +16,6 @@ namespace KDS_1
             InitializeComponent();
         }
 
-        public void AddKlient(Klient k)
-        {
-            alleKlienten.Add(k);
-            listBoxKlienten.Items.Add(k.ToString());
-        }
-
         private void KlientenDatenLadenMainWin()
         {
             Program.conn.Open();
@@ -37,6 +31,12 @@ namespace KDS_1
             }
             reader.Close();
             Program.conn.Close();
+        }
+
+        public void AddKlient(Klient k)
+        {
+            alleKlienten.Add(k);
+            listBoxKlienten.Items.Add(k.ToString());
         }
 
         private void klientHinzufuegenToolStripMenuItem_Click(object sender, EventArgs e)
@@ -81,11 +81,7 @@ namespace KDS_1
 
         private void listBoxKlienten_DoubleClick(object sender, EventArgs e)
         {
-
             GespraecheLaden();
-            // TODO Anzeige verschönern 
-            // eventuell nur den Nachnamen des Nutzers anzeigen lassen. 
-            // Datum eines Gesprächs? Datenbank verändern
         }
 
         Klient bearbeiteterKlient = null;
@@ -109,32 +105,27 @@ namespace KDS_1
 
             Program.conn.Open();
             MySqlCommand cmd = Program.conn.CreateCommand();
-            cmd.CommandText = "SELECT e.Eintraege_ID, e.eintrag, e.fk_nutzer_ID, n.nachname, n.vorname, n.arztnummer"
+            cmd.CommandText = "SELECT e.Eintraege_ID, e.eintrag, e.datumEintrag, e.fk_nutzer_ID, n.nachname, n.arztnummer"
            + " FROM kds.eintraege e"
            + " LEFT OUTER JOIN kds.nutzer n ON n.nutzer_ID = e.fk_nutzer_ID"
            + " WHERE fk_klient_id =  " + bearbeiteterKlient.ID
-           + " ORDER BY e.Eintraege_ID DESC";
+           + " ORDER BY e.datumEintrag DESC";
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                string nutzername = reader.GetString(4) + " " + reader.GetString(3) + " " + reader.GetString(5);
-                AddBisherigesGespraechToListBox(new Eintrag(reader.GetInt64(0), reader.GetString(1), reader.GetInt64(2), nutzername));
+                string nutzername = reader.GetString(4) + " - " + reader.GetString(5);
+                AddBisherigesGespraechToListBox(new Eintrag(reader.GetInt64(0), reader.GetString(1), reader.GetDateTime(2), reader.GetInt64(3), nutzername));
             }
             reader.Close();
             Program.conn.Close();
         }
 
-        private void buttonGespraechsDokuAbbrechen_Click(object sender, EventArgs e)
-        {
-            this.Controls.Remove(this.panelEintragKlientDoku);
-            this.Controls.Add(this.panelMainWindow);
-
-            bisherigeGespraeche.Clear();
-            listBoxListeBisherigerGespraeche.Items.Clear();
-        }
-
         private void buttonGespraechSpeichern_Click(object sender, EventArgs e)
         {
+            long logNutzer = Program.eingeloggterNutzer.ID;
+
+            //DateTime heutigesDatum = DateTime.Now;
+
             string eintrag = textBoxGespraechEintrag.Text;
             if (eintrag.Length == 0)
             {
@@ -148,10 +139,7 @@ namespace KDS_1
                 return;
             }
 
-            long logNutzer = Program.eingeloggterNutzer.ID;
-
             bearbeiteterKlient = alleKlienten[index];
-
             if (bearbeiteterEintrag == null)
             {
                 Program.conn.Open();
@@ -159,8 +147,9 @@ namespace KDS_1
 
                 // Eintrag für diesen Klient erstellen
                 cmd = Program.conn.CreateCommand();
-                cmd.CommandText = "INSERT INTO kds.eintraege (eintrag, fk_nutzer_ID, fk_klient_ID) VALUES (@eintrag, @fk_nutzer_id, @fk_klient_id) ";
+                cmd.CommandText = "INSERT INTO kds.eintraege (eintrag, datumEintrag, fk_nutzer_ID, fk_klient_ID) VALUES (@eintrag, NOW(), @fk_nutzer_id, @fk_klient_id)";
                 cmd.Parameters.AddWithValue("eintrag", eintrag);
+                //cmd.Parameters.AddWithValue("datumEintrag", heutigesDatum);
                 cmd.Parameters.AddWithValue("fk_nutzer_id", logNutzer); // ID des eingeloggten Nutzers einfügen
                 cmd.Parameters.AddWithValue("fk_klient_id", bearbeiteterKlient.ID);
                 cmd.Prepare();
@@ -185,13 +174,24 @@ namespace KDS_1
             textBoxGespraechEintrag.Clear();
             listBoxListeBisherigerGespraeche.Items.Clear();
             GespraecheLaden();
+
+            // TODO Einträge sollen auch andere Schriftarten, Größen oder Farben anzeigen, wenn diese bearbeitet werden
+        }
+
+        private void buttonGespraechsDokuAbbrechen_Click(object sender, EventArgs e)
+        {
+            this.Controls.Remove(this.panelEintragKlientDoku);
+            this.Controls.Add(this.panelMainWindow);
+
+            bisherigeGespraeche.Clear();
+            listBoxListeBisherigerGespraeche.Items.Clear();
         }
 
         private Eintrag bearbeiteterEintrag = null;
         private void listBoxListeBisherigerGespraeche_SelectedIndexChanged(object sender, EventArgs e)
         {
             int index = listBoxListeBisherigerGespraeche.SelectedIndex;
-            if (index < 0 || index >= alleKlienten.Count)
+            if (index < 0 || index >= bisherigeGespraeche.Count)
             {
                 bearbeiteterEintrag = null;
             }
@@ -210,9 +210,8 @@ namespace KDS_1
             }
         }
 
-        /**
-         * Sektion Nutzer Login und Registrierung
-        **/
+        // TODO Abmelde Button 
+        // Zurück zum Login um anderen Nutzer anzumelden
 
         private void FormKDS_Shown(object sender, EventArgs e)
         {
@@ -231,7 +230,7 @@ namespace KDS_1
             //Platzhalter automatisches Login des ersten Nutzers und Testnutzer
             //Program.conn.Open();
             //MySqlCommand cmd = Program.conn.CreateCommand();
-            //cmd.CommandText = "SELECT nutzer_ID, vorname, nachname, mailadresse, arztnummer FROM kds.nutzer WHERE mailadresse = 'H.Adler@praxis.de' AND passwort = 'fas3234' LIMIT 1";
+            //cmd.CommandText = "SELECT nutzer_ID, vorname, nachname, mailadresse, arztnummer FROM kds.nutzer WHERE mailadresse = 'a@a.de' AND passwort = 'm8NFSdVl2VBbKH3gzSCsd74dPyw=' LIMIT 1";
             //MySqlDataReader reader = cmd.ExecuteReader();
             //reader.Read();
 
@@ -245,10 +244,17 @@ namespace KDS_1
         private void jSONToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // TODO Einträge Exportieren als JSON
+            // Nutzung vom NuGet-Paket Newtonsoft.JSON
+        }
+
+        private void sendenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // TODO E-Mail funktion 
+            // Wahrscheinlich in eigener Form 
+            // Testen mit Gmail, um Googles SMTP-Server zu nutzen
+            // oder mit cloudbasierten Alternativen wie AWS
+            // JSON mit Einträgen automatisch als Anhang 
         }
     }
 }
 
-
-// TODO Abmelde Button 
-// Zurück zum Login um anderen Nutzer anzumelden

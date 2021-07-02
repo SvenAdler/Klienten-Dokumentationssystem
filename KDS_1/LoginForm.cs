@@ -52,9 +52,10 @@ namespace KDS_1
             return true;
         }
 
+        // TODO Passwort nicht in Klartext währen Login anzeigen lassen
+
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            // TODO Bedingungen passwort
             string mailadresse = textBoxEmailAsNutzername.Text;
             if (!MailadressePruefen(mailadresse))
             {
@@ -63,6 +64,11 @@ namespace KDS_1
             }
 
             string passwort = textBoxNutzerPasswort.Text;
+            if (passwort.Length < 8 || passwort.Length > 200)
+            {
+                MessageBox.Show("Das Passwort ist zu kurz/lang!");
+                return;
+            }
 
             Program.conn.Open();
             MySqlCommand cmd = Program.conn.CreateCommand();

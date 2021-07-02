@@ -17,8 +17,6 @@ namespace KDS_1
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormKDS());
-            
-            // Neues Hauptfenster festlegen nach login !! 
         }
     }
 }

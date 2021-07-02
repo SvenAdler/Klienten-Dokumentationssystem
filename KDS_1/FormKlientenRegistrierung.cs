@@ -7,7 +7,7 @@ namespace KDS_1
     public partial class FormKlientenRegistrierung : Form
     {
 
-        public FormKDS FormKDS;
+        public FormKDS FormKDS { get; }
 
         public FormKlientenRegistrierung(FormKDS kds)
         {
@@ -49,6 +49,8 @@ namespace KDS_1
                 return;
             }
 
+            //DateTime heutigesDatum = DateTime.Now;
+
             Program.conn.Open();
 
             // TODO Transactions 
@@ -67,8 +69,9 @@ namespace KDS_1
 
             // Ersten Eintrag für diesen Klient erstellen
             cmd = Program.conn.CreateCommand();
-            cmd.CommandText = "INSERT INTO kds.eintraege (eintrag, fk_nutzer_ID, fk_klient_ID) VALUES (@eintrag, @fk_nutzer_id, @fk_klient_id)";
+            cmd.CommandText = "INSERT INTO kds.eintraege (eintrag, datumEintrag, fk_nutzer_ID, fk_klient_ID) VALUES (@eintrag, NOW(), @fk_nutzer_id, @fk_klient_id)";
             cmd.Parameters.AddWithValue("eintrag", erstgespraechEintrag);
+            //cmd.Parameters.AddWithValue("datumEintrag", heutigesDatum);
             cmd.Parameters.AddWithValue("fk_nutzer_id", Program.eingeloggterNutzer.ID); // ID des eingeloggten Nuters einfügen
             cmd.Parameters.AddWithValue("fk_klient_id", klient_id);
             cmd.Prepare();
@@ -91,9 +94,6 @@ namespace KDS_1
 
             DialogResult = DialogResult.OK;
             this.Close();
-
-            // TODO Datum 
-            // evtl Datum hinzufügen... 
         }
     }
 }
