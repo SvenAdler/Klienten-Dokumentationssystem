@@ -13,8 +13,6 @@ namespace KDS_1
             byte[] encrypted_bytes = sha512.ComputeHash(passwort_bytes);
 
             return Convert.ToBase64String(encrypted_bytes);
-
-            // TODO Änderung des Verschlüsselungsalgotithmus
         }
     }
 }
