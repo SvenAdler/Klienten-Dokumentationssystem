@@ -56,7 +56,7 @@ namespace KDS_1
             cmd.Parameters.AddWithValue("nachname", nachname);
             cmd.Parameters.AddWithValue("arztnummer", arztnummer);
             cmd.Parameters.AddWithValue("mailadresse", mailadresse);
-            cmd.Parameters.AddWithValue("passwort", HashClass.SHA1HashPasswort(passwort));
+            cmd.Parameters.AddWithValue("passwort", HashClass.SHA512HashPasswort(passwort));
             cmd.Prepare();
             cmd.ExecuteNonQuery();
 
