@@ -21,8 +21,6 @@ Nach erfolgtem Login werden alle Klienten in das Hauptfenster geladen und ihre E
 aufrufbar. Einträge durch andere Nutzer können nicht bearbeitet werden. 
 
 In Zukunft soll folgendes umgesetzt werden: 
-- Änderung der SHA-1-Verschlüsselung in SHA-512, um die Sicherheit zu erhöhen oder Auswahl aus verschiedenen
-  Verschlüsselungsalgorithmen
 - Einträge sollen als JSON und eventuell andere Dateiformate exportiert werden können
 - Zudem soll eine E-Mail-Funktion erstellt werden, durch welche Dateien direkt über das KDS versendet
   werden können
